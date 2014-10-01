@@ -34,13 +34,13 @@
                 <form class="Form" name="SetupForm">
                     <p class="SetupFormText">Nombre de personnes à générer :<input name="Personnes" id ="Personnes" value="2" min="2" max="1000" type="number"/></p>
                     <p class="SetupFormText">Nombre d'itérations (années) :<input name="Iterations" id="Iterations" value="1" min="1" max="1000" type="number"/></p>
-                    <p class="SetupFormText">Temps entre les années (ms) :<input name="Temps" id="Temps" value="10" min="1" max="2000" type="number" /></p>
+                    <p class="SetupFormText">Temps entre les itérations (ms) :<input name="Temps" id="Temps" value="10" min="1" max="2000" type="number" /></p>
                 </form>
 
-                <button id="buttonStart" class="Button" onclick="spitBabyOutOfVagina()">Commencer</button>
+                <button id="buttonStart" class="Button" onclick="spitBabyOutOfVagina();hideFonctionnement();">Commencer</button>
             </div>
 
-            <div class="Fonctionnement">
+            <div class="Fonctionnement" id="Fonctionnement">
             	<h3>Fonctionnement</h3>
             	
             	<!-- Liste en point pour le fonctionnement -->
@@ -77,19 +77,22 @@
         </div>  
 
     </body>
-    <!-- Rafraichir la valeur des element du formulaires s'il y a des parametres dans la partie |GET de l'url -->
     <script type="text/javascript">
-    /*
-        var getParameters = location.search.substring(1).split("&");
 
-        var personnes = getParameters[0].split("=")[1];
-        var iterations = getParameters[1].split("=")[1];
-        var temps = getParameters[2].split("=")[1];
-
-        document.getElementById("Personnes").value = personnes;
-        document.getElementById("Iterations").value = iterations;
-        document.getElementById("Temps").value = temps;
-    */
+    function hideFonctionnement(){
+        document.getElementById("Fonctionnement").innerHTML = 
+        	"<h3>Résultats</h3>" +
+        	"<form>" + 
+            	"<ul type=\"circle\">" +
+            		"<li>Nombre de personnes : </li>" +
+            		"<input name=\"nbPersonnes\" id =\"nbPersonnes\" type=\"text\" disabled=\"true\" value=\"0\" />" +
+            		"<li>Nombre de doublons : </li>" +
+            		"<input name=\"nbDoublons\" id =\"nbPersonnes\" type=\"text\" disabled=\"true\" value=\"0\" />" +
+            		"<li>Nombre de triplets : </li>" +
+            		"<input name=\"nbTriplets\" id =\"nbPersonnes\" type=\"text\" disabled=\"true\" value=\"0\" />" +
+            	"</ul>" +
+            "</form>";
+    }
     </script>
 
 </html>

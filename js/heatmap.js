@@ -36,13 +36,13 @@ heatMapHigher.init({
   subDomain: "x_day", 
 
   // Seting pour legende
-  legend: [1, 2],
+  legend: [ 2, 3],
   range: 6,
   // Color of legend
   legendColors: {
     empty: "#C9C9C9",
-    min: "#40ffd8",
-    max: "#f20013"
+    min: "#0000FF",
+    max: "#FFFF00"
   },
 
   displayLegend: false,
@@ -65,13 +65,13 @@ heatMaplower.init({
   subDomain: "x_day", 
 
   // Seting pour legende
-  legend: [1, 2],
+  legend: [ 2, 3],
   range: 6,
   // Color of legend
   legendColors: {
     empty: "#C9C9C9",
-    min: "#40ffd8",
-    max: "#f20013"
+    min: "#0000FF",
+    max: "#FFFF00"
   },
 
   legendTitleFormat: {

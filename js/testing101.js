@@ -1,6 +1,7 @@
 
 // TODO : Desactiver le bouton jusqu'à la fin des itérations
 // TODO : Bouton Stop
+// TODO : Ajout de l<affichage des resultats
 
 var test = document.getElementById("test");
 test.textContent = "Test ready";
@@ -169,12 +170,17 @@ function analyzeResult()
 
 function PrintArray(liste)
 {
+	/*
 	var text = "";
 	for(var i = 0; i < liste.length ; i++)
 	{
 		text += liste[i] + "\n\b";
 	}
 	printTest(text);
+	*/
+	//document.getElementById("nbPersonnes").value = resultStat[0];
+	//document.getElementById("nbDoublons").value =  resultStat[1];
+	//document.getElementById("nbTriplets").value =  resultStat[2];
 }
 
 function printTest(text)

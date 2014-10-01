@@ -37,7 +37,7 @@ cursor: pointer
 background-color: #999;
 fill: #999
 }
-/*
+
 Remove comment to apply this style to date with value equal to 0
 .q0
 {
@@ -45,7 +45,7 @@ background-color: #fff;
 fill: #fff;
 stroke: #ededed
 }
-*/
+
 /* 0 personnes */
 .q1 
 {
@@ -60,8 +60,8 @@ fill: #00FF00
 }
 .q3
 {
-background-color: #0000FF;
-fill: #0000FF
+background-color: #3333CC;
+fill: #3333CC
 }
 .q4
 {
