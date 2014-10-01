@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- Encodage : UTF8 -->
+<meta charset="utf-8">
+<html>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+
+    <!-- D3 Library and tool tip extension -->
+    <script type="text/javascript" src="js/d3.min.js"></script>
+
+    <!-- Cal-HeatMap Css and Javascript-->
+    <link rel="stylesheet" type="text/css" href="css/cal-heatmap.css"/>
+    <script type="text/javascript" src="js/cal-heatmap.min.js"></script>
+
+    <!-- Tooltip Bar Graph Css -->
+    <link rel="stylesheet" type="text/css" href="css/BarGraph.css"/>
+
+    <head>
+      <title>Paradoxe des anniversaires</title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="img/thumbnail.jpg">
+    </head>
+
+    <body>
+
+        <!-- Conteneur du visuel du plus haut niveau -->
+        <div class="Container">
+            <h1 style="text-align:center"> Paradoxe des anniversaires</h1>
+
+            <!-- Section des configurations de l'experience -->
+            <div class="Setup">
+                <h3>Configuration des variables</h3>
+
+                <!-- Formulaire Html -->
+                <form class="Form" name="SetupForm">
+                    <p class="SetupFormText">Nombre de personnes à générer :<input name="Personnes" id ="Personnes" value="2" min="2" max="1000" type="number"/></p>
+                    <p class="SetupFormText">Nombre d'itérations (années) :<input name="Iterations" id="Iterations" value="1" min="1" max="1000" type="number"/></p>
+                    <p class="SetupFormText">Temps entre les années (ms) :<input name="Temps" id="Temps" value="10" min="1" max="2000" type="number" /></p>
+                </form>
+
+                <button id="buttonStart" class="Button" onclick="spitBabyOutOfVagina()">Commencer</button>
+            </div>
+
+            <div class="Fonctionnement">
+            	<h3>Fonctionnement</h3>
+            	
+            	<!-- Liste en point pour le fonctionnement -->
+            	<ul type="circle">
+            		<li>Choisir le nombre de personnes à évaluer pour l'expérience</li>
+            		<li>Choisir le nombre de fois à faire l'expérience</li>
+            		<li>Choisir le temps à attendre entre les itérations (pour voir le résultat sur les graphiques)</li>
+            		<li>Appuyer sur commencer pour lancer l'expérience</li>
+            	</ul>
+            </div>
+
+          <div class="HeatMap">
+            <!-- Script pour la gestion du graphique -->
+            <div id="cal-heatmap">
+            	<h3>Calendrier des dates d'anniversaires</h3>
+              <script type="text/javascript" src="js/heatmap.js"></script>
+            </div>
+          </div>
+
+          <div class="BarGraph">
+          	<h3> Bar Graph</h3>
+            <p>% d'occurence</p>
+            <div id="svg">
+              <script type="text/javascript" src="js/BarGraph.js"></script>
+            </div>
+            <p align="right">Nombre de pairs</p>
+          </div>
+
+            <div class = "Testing 101">
+                <h2>Testing 101</h2>
+                <div id="test">Testing base</div>
+                <script type="text/javascript" src="js/testing101.js"></script>
+            </div>
+        </div>  
+
+    </body>
+    <!-- Rafraichir la valeur des element du formulaires s'il y a des parametres dans la partie |GET de l'url -->
+    <script type="text/javascript">
+    /*
+        var getParameters = location.search.substring(1).split("&");
+
+        var personnes = getParameters[0].split("=")[1];
+        var iterations = getParameters[1].split("=")[1];
+        var temps = getParameters[2].split("=")[1];
+
+        document.getElementById("Personnes").value = personnes;
+        document.getElementById("Iterations").value = iterations;
+        document.getElementById("Temps").value = temps;
+    */
+    </script>
+
+</html>

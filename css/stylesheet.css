@@ -1,0 +1,163 @@
+head
+{
+
+}
+
+body
+{
+  margin:50px 0px;
+  padding:0px;
+  text-align:center;
+  font: normal .80em 'trebuchet ms', arial, sans-serif;
+  background: #F7F7F7 url("../img/pattern.png") fixed;
+  color: #555;
+}
+
+/* paragraph config */
+h3
+{
+	margin-left:20px;
+}
+
+li
+{
+  margin: 10px 0;
+  margin-right: 20px;
+  /*text-align: justify;
+  text-justify: inter-word;*/
+}
+
+/* Visuel pour les elements de type class */
+.Container
+{
+  width:550px;
+  height: 1300px;
+  margin-left:20px;
+  margin:0px auto;
+  text-align:left;
+  padding:15px;
+  border:1px solid #000000;
+  background-color: #eeeeee;
+}
+
+.Setup
+{
+	margin-bottom:20px;
+	width:255px;
+	height:260px;
+	border:3px solid #000000;
+	border-radius: 10px 10px 10px 10px;
+	background-color:#FFFFFF;
+	position:relative;
+	float: left;
+}
+
+.Fonctionnement
+{
+	margin-bottom:20px;
+	margin-left: 20px;
+	width:255px;
+	height:260px;
+	border:3px solid #000000;
+	border-radius: 10px 10px 10px 10px;
+	background-color:#FFFFFF;
+	position:relative;
+	float: left;
+}
+
+.SetupFormText
+{
+	margin-left:20px;
+	margin-right:20px;
+	padding-right:10px;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+}
+
+.Button {
+	margin-left: 25%;
+	margin-top: 10px;
+
+	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	box-shadow:inset 0px 1px 0px 0px #f5978e;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
+	background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+	background-color:#f24537;
+	-webkit-border-top-left-radius:4px;
+	-moz-border-radius-topleft:4px;
+	border-top-left-radius:4px;
+	-webkit-border-top-right-radius:4px;
+	-moz-border-radius-topright:4px;
+	border-top-right-radius:4px;
+	-webkit-border-bottom-right-radius:4px;
+	-moz-border-radius-bottomright:4px;
+	border-bottom-right-radius:4px;
+	-webkit-border-bottom-left-radius:4px;
+	-moz-border-radius-bottomleft:4px;
+	border-bottom-left-radius:4px;
+	text-indent:0;
+	border:3px solid #d02718;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:38px;
+	line-height:25px;
+	width:122px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #810e05;
+}
+
+.Button:hover
+{
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
+	background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537');
+	background-color:#c62d1f;
+}
+
+.Button:active 
+{
+	position:relative;
+	top:1px;
+}
+
+/* Cal-Heatmap*/
+.HeatMap
+{
+  width:510px;
+  height: 250px;
+  margin:0px auto;
+  margin-bottom:20px;
+  display:inline-block;
+  padding: 0px 15px 15px 15px;
+  background-color: #eeeeee;
+  border:3px solid #000000;
+  border-radius: 10px 10px 10px 10px;
+  background-color:#FFFFFF;
+}
+
+/* D3 Bargraph*/
+.BarGraph
+{
+  width:510px;
+  height: 285x;
+  display:inline-block;
+  padding: 0px 15px 15px 15px;
+  background-color: #eeeeee;
+  border:3px solid #000000;
+  border-radius: 10px 10px 10px 10px;
+  background-color:#FFFFFF;
+}
+
+.BarGraph p
+{
+	margin: 0px;
+}
