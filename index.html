@@ -34,7 +34,7 @@
                 <form class="Form" name="SetupForm">
                     <p class="SetupFormText">Nombre de personnes à générer :<input name="Personnes" id ="Personnes" value="2" min="2" max="1000" type="number"/></p>
                     <p class="SetupFormText">Nombre d'itérations (années) :<input name="Iterations" id="Iterations" value="1" min="1" max="1000" type="number"/></p>
-                    <p class="SetupFormText">Temps entre les itérations (ms) :<input name="Temps" id="Temps" value="10" min="1" max="2000" type="number" /></p>
+                    <p class="SetupFormText">Temps entre les itérations (ms) :<input name="Temps" id="Temps" value="10" min="1" max="5000" type="number" /></p>
                 </form>
 
                 <button id="buttonStart" class="Button" onclick="spitBabyOutOfVagina();hideFonctionnement();">Commencer</button>
@@ -70,15 +70,15 @@
           </div>
 
             <div class = "Testing 101">
-                <h2>Testing 101</h2>
-                <div id="test">Testing base</div>
-                <script type="text/javascript" src="js/testing101.js"></script>
+                <div id="test"></div>
+                <script type="text/javascript" src="js/simulation.js"></script>
             </div>
         </div>  
 
     </body>
     <script type="text/javascript">
 
+    <!-- Modifie le html interne pour afficher les resultats au lieu des consignes -->
     function hideFonctionnement(){
         document.getElementById("Fonctionnement").innerHTML = 
         	"<h3>Résultats</h3>" +

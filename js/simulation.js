@@ -1,10 +1,14 @@
+/*
+	A chaque itration, il faut icrementer le nombre totale de personnes ( statistiques ) ainsi que le nombre totale de doublons et triplets
+	Il faut aussi mettre a jour le BarGraph.
 
-// TODO : Desactiver le bouton jusqu'à la fin des itérations
-// TODO : Bouton Stop
-// TODO : Ajout de l<affichage des resultats
+	Il faut aussi lier la mise a jour des champs resultats avec la fin d'une iteration
+
+	Bug : Desactiver le bouton commencer jusqu'a la fin de toutes les iterations
+	MAYBE : Ajout d'un bouton arret ?
+*/
 
 var test = document.getElementById("test");
-test.textContent = "Test ready";
 
 var probMois = [319297, 299235, 335786, 308809, 334437, 336251, 347934, 362798, 350711, 347354, 330832, 335111];
 probMois = normalizeArray(probMois);
@@ -59,7 +63,6 @@ function startYearIteration()
 
 function endYearIteration()
 {
-	analyzeResult();
 	window.clearInterval(myInterval);
 
 	yearSimulated++;
@@ -111,8 +114,6 @@ function initializeArray(size, defaultValue)
 
 function getCumulativeDistributionFunction(fDeMasse)
 {
-	test.textContent = "Getting repartition";
-
 	var i = 0;
 
 	var fRepartition = new Array(fDeMasse.length); 
@@ -127,7 +128,6 @@ function getCumulativeDistributionFunction(fDeMasse)
 function getEventFromCumulativeDistributionFunction(value, fDeRepartition)
 {
 	var i = 0;
-	//printTest ("Value " + fDeRepartition.length);
 	if(fDeRepartition.length > 0)
 	{
 		while(value > fDeRepartition[i])
@@ -158,37 +158,6 @@ function generateRandom()
 	}
 
 }
-
-function analyzeResult()
-{
-	for(var i = 0; i < resultDay.length; i++)
-	{
-		resultStat[resultDay[i]]++;
-	}
-	PrintArray(resultStat);
-}
-
-function PrintArray(liste)
-{
-	/*
-	var text = "";
-	for(var i = 0; i < liste.length ; i++)
-	{
-		text += liste[i] + "\n\b";
-	}
-	printTest(text);
-	*/
-	//document.getElementById("nbPersonnes").value = resultStat[0];
-	//document.getElementById("nbDoublons").value =  resultStat[1];
-	//document.getElementById("nbTriplets").value =  resultStat[2];
-}
-
-function printTest(text)
-{
-	test.textContent = text;
-}
-
-
 
 // Function pour le heatmap
 

@@ -24,32 +24,55 @@ var svg = d3.select(".BarGraph").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data/dataPairs.tsv", type, function(error, data) {
-  x.domain(data.map(function(d) { return d.pairs; }));
-  y.domain([0, d3.max(data, function(d) { return d.frequence; })]);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-
-
-  svg.selectAll(".bar")
-      .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d.pairs); })
-      .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.frequence); })
-      .attr("height", function(d) { return height - y(d.frequence); });
-
-});
 
 function type(d) {
   d.frequence = +d.frequence;
   return d;
 }
+
+
+/* Test pour changer les informations du graph */
+var dataGraph = new Array();
+
+/* Initialise le tableau des informations pour le graph */
+function initializeGraph(){
+
+  for (var i = 0; i < 5; i++) {
+    dataGraph[i] = { pairs: i.toString(), frequence: 0};
+  };
+  dataGraph[5] = { pairs: "5+", frequence: 0};
+
+  x.domain(dataGraph.map(function(d) {
+    return d.pairs; 
+  }));
+
+  y.domain([0, 1]);
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);  
+}
+
+function modifyGraph(data){
+
+    x.domain(data.map(function(d) {
+      return d.pairs; 
+    }));
+
+    y.domain([0, 1]);
+
+    svg.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.pairs); })
+        .attr("width", x.rangeBand())
+        .attr("y", function(d) { return y(d.frequence); })
+        .attr("height", function(d) { return height - y(d.frequence); });
+}
+
+initializeGraph();
