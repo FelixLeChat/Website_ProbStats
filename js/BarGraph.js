@@ -1,11 +1,14 @@
 
-var margin,x,y,xAxis,yAxis,svg;
+var margin,x,y,xAxis,yAxis,svg,formatPercent,tip;
 
 
 function initialiseBarGraph(){
    margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 500 - margin.left - margin.right,
     height = 210 - margin.top - margin.bottom;
+
+    // Tooltip
+    formatPercent = d3.format(".0%");
 
    x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
@@ -20,13 +23,23 @@ function initialiseBarGraph(){
    yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .ticks(10, "%");
+    .tickFormat(formatPercent); // Tooltip
+
+  tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .attr("id", "d3-tip")
+    .offset([-10, 0])
+    .html(function(d) {
+      return "<strong>Occurence:</strong> <span style='color:red'>" + (d.frequence*100).toFixed(2) + "%</span>";
+    })
 
    svg = d3.select(".BarGraph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.call(tip);
 }
 
 function type(d) {
@@ -73,5 +86,7 @@ function modifyGraph(data){
         .attr("x", function(d) { return x(d.pairs); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d.frequence); })
-        .attr("height", function(d) { return height - y(d.frequence); });
+        .attr("height", function(d) { return height - y(d.frequence); })
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
 }

@@ -124,6 +124,13 @@ function updateBarGraph(){
 
 	// BIG HACK pour le bargraph
 	document.getElementById("svg-bargraph").innerHTML = "<h3>Occurence de pairs après " + yearSimulated +" iterations</h3><p>% d'occurence</p>";
+  	
+  	/* Fix for the remaining tool-tip
+  	tip = document.getElementById("d3-tip");
+  	if(tip !=null){
+  	  tip.setAttribute("class", "NOCLASS");
+  	  tip.setAttribute("id", "NOID");
+    }*/
   	initialiseBarGraph();
 	initialiseGraph();
 	modifyGraph(dataGraph);
