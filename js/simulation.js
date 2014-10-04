@@ -2,9 +2,6 @@
 	A chaque itration, il faut icrementer le nombre totale de personnes ( statistiques ) ainsi que le nombre totale de doublons et triplets
 	Il faut aussi mettre a jour le BarGraph.
 
-	Il faut aussi lier la mise a jour des champs resultats avec la fin d'une iteration
-
-	Bug : Desactiver le bouton commencer jusqu'a la fin de toutes les iterations
 	MAYBE : Ajout d'un bouton arret ?
 */
 
@@ -21,17 +18,26 @@ var nbOfBirthToSimulate = 0;
 var nbOfYearsToSimulated = 0;
 
 var resultMonth = initializeArray(probMois.length, 0);
-
 var resultDay = initializeArray(360, 0);
-
 var resultStat = initializeArray(5,0);
 
 var myInterval;
 
-function spitBabyOutOfVagina()
+// Variable pour les résultats totaux
+var totalBirth;
+
+
+function initialiseSimulation()
 {
 	nbOfBirthToSimulate = document.getElementById("Personnes").value;
 	nbOfYearsToSimulated = document.getElementById("Iterations").value;
+
+	// disable button
+	document.getElementById("buttonStart").disabled = true;
+
+	// Réinitialise les résultats totaux
+	totalBirth = 0;
+	resultStat = initializeArray(5,0);
 	startSimulation();
 }
 
@@ -44,7 +50,8 @@ function startSimulation()
 
 function endSimulation()
 {
-
+	// Enable button
+	document.getElementById("buttonStart").disabled = false;
 }
 
 function startYearIteration()
@@ -54,8 +61,6 @@ function startYearIteration()
 	resultDay = initializeArray(360, 0);
 	// Initialise le heatMap
 	resetHeatMap();
-
-	resultStat = initializeArray(5,0);
 	
 	birthSimulated = 0;
 	myInterval = window.setInterval(generateRandom, 10);
@@ -64,6 +69,7 @@ function startYearIteration()
 function endYearIteration()
 {
 	window.clearInterval(myInterval);
+	updateResults();
 
 	yearSimulated++;
 
@@ -78,6 +84,13 @@ function endYearIteration()
 	{
 		setTimeout(startYearIteration, document.getElementById("Temps").value);
 	}
+}
+
+function updateResults(){
+	totalBirth += parseInt(nbOfBirthToSimulate);	
+	document.getElementById("nbPersonnes").value = totalBirth;
+	document.getElementById("nbDoublons").value = resultStat[1];
+	document.getElementById("nbTriplets").value = resultStat[2];
 }
 
 
@@ -155,6 +168,40 @@ function generateRandom()
 		resultMonth[key]++;
 		var randomDay = key*30 + Math.ceil(Math.random() * 30)-1;
 		resultDay[randomDay]++;
+
+		result = resultDay[randomDay];
+
+		switch(result){
+
+			case 1:
+			resultStat[0]++;
+			break;
+
+			case 2:
+			resultStat[0]--;
+			resultStat[1]++;
+			break;
+
+			case 3:
+			resultStat[1]--;
+			resultStat[2]++;
+			break;
+
+			case 4:
+			resultStat[2]--;
+			resultStat[3]++;
+			break;	
+
+			case 3:
+			resultStat[3]--;
+			resultStat[4]++;
+			break;	
+
+			default:
+			break;
+		}
+
+
 	}
 
 }
@@ -175,9 +222,6 @@ var oneDay = (new Date(2014,0,2,5,0,11,0)/1000)- timestampStart;
 
 // Array des timestamp et valeurs pour le heatmap
 var heatMap = new Array();
-
-
-resetHeatMap();
 
 function resetHeatMap()
 {
