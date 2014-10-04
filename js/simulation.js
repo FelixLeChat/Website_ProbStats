@@ -102,7 +102,7 @@ function updateResults(){
 	totalBirth += parseInt(nbOfBirthToSimulate);	
 	document.getElementById("nbPersonnes").value = totalBirth;
 	document.getElementById("nbDoublons").value = resultStat[1];
-	document.getElementById("nbTriplets").value = resultStat[2];
+	document.getElementById("nbTriplets").value = resultStat[2] + resultStat[3] + resultStat[4];
 }
 
 function updateBarGraph(){
@@ -232,12 +232,9 @@ function generateRandom()
 			resultStat[3]++;
 			break;	
 
-			case 3:
+			default:
 			resultStat[3]--;
 			resultStat[4]++;
-			break;	
-
-			default:
 			break;
 		}
 
