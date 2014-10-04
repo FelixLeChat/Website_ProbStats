@@ -25,6 +25,11 @@ var myInterval;
 
 // Variable pour les résultats totaux
 var totalBirth;
+var totalPairs;
+var lastPairs;
+
+initialiseBarGraph();
+initialiseGraph();
 
 
 function initialiseSimulation()
@@ -38,6 +43,17 @@ function initialiseSimulation()
 	// Réinitialise les résultats totaux
 	totalBirth = 0;
 	resultStat = initializeArray(5,0);
+	totalPairs = 0;
+	lastPairs = 0;
+
+	// Initialise le BarGraph
+	dataGraph[0] = { pairs: "Pas de paires", frequence: 0};
+  	dataGraph[1] = { pairs: "Au moins une paire", frequence: 0};
+
+  	document.getElementById("svg-heatmap").innerHTML = "<h3>Occurence de pairs dans la simulation</h3><p>% d'occurence</p>";
+  	initialiseBarGraph();
+	initialiseGraph();
+
 	startSimulation();
 }
 
@@ -52,6 +68,7 @@ function endSimulation()
 {
 	// Enable button
 	document.getElementById("buttonStart").disabled = false;
+	modifyGraph(dataGraph);
 }
 
 function startYearIteration()
@@ -61,7 +78,7 @@ function startYearIteration()
 	resultDay = initializeArray(360, 0);
 	// Initialise le heatMap
 	resetHeatMap();
-	
+
 	birthSimulated = 0;
 	myInterval = window.setInterval(generateRandom, 10);
 }
@@ -70,8 +87,8 @@ function endYearIteration()
 {
 	window.clearInterval(myInterval);
 	updateResults();
-
-	yearSimulated++;
+	yearSimulated++;	
+	updateBarGraph();
 
 	//Show heatMap
 	setheatMap(parser(listToheatMap(resultDay)));
@@ -91,6 +108,28 @@ function updateResults(){
 	document.getElementById("nbPersonnes").value = totalBirth;
 	document.getElementById("nbDoublons").value = resultStat[1];
 	document.getElementById("nbTriplets").value = resultStat[2];
+}
+
+function updateBarGraph(){
+
+	// Calcule le nombre de pairs obtenue dans une
+
+	totalPairs = resultStat[1] + resultStat[2] + resultStat[3] + resultStat[4] - lastPairs;
+	lastPairs += totalPairs;
+
+	// Update de la fréquence des evenements
+	if(totalPairs == 0 && yearSimulated >= 1){
+		dataGraph[0].frequence = ((dataGraph[0].frequence * (yearSimulated-1)) + 1)/yearSimulated;
+		dataGraph[1].frequence = (dataGraph[1].frequence * (yearSimulated-1)) / yearSimulated;
+	}
+	else if( yearSimulated >= 1){
+		dataGraph[0].frequence = (dataGraph[0].frequence * (yearSimulated-1))/yearSimulated;
+		dataGraph[1].frequence = ((dataGraph[1].frequence * (yearSimulated-1)) + 1) / yearSimulated;
+	}
+
+	// Debugging purpose
+	//console.log(totalPairs);
+	//dataGraph.forEach(function(d){console.log(d);});
 }
 
 

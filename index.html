@@ -32,9 +32,9 @@
 
                 <!-- Formulaire Html -->
                 <form class="Form" name="SetupForm">
-                    <p class="SetupFormText">Nombre de personnes à générer :<input name="Personnes" id ="Personnes" value="2" min="2" max="1000" type="number"/></p>
-                    <p class="SetupFormText">Nombre d'itérations (années) :<input name="Iterations" id="Iterations" value="1" min="1" max="1000" type="number"/></p>
-                    <p class="SetupFormText">Temps entre les itérations (ms) :<input name="Temps" id="Temps" value="10" min="1" max="5000" type="number" /></p>
+                    <p class="SetupFormText">Nombre de personnes à générer :<input name="Personnes" id ="Personnes" value="40" min="2" max="1000" type="number"/></p>
+                    <p class="SetupFormText">Nombre d'itérations (années) :<input name="Iterations" id="Iterations" value="5" min="1" max="1000" type="number"/></p>
+                    <p class="SetupFormText">Temps entre les itérations (ms) :<input name="Temps" id="Temps" value="2000" min="1" max="5000" type="number" /></p>
                 </form>
 
                 <button id="buttonStart" class="Button" onclick="initialiseSimulation();hideFonctionnement();">Commencer</button>
@@ -60,12 +60,10 @@
             </div>
           </div>
 
-          <div class="BarGraph">
-          	<h3> Bar Graph</h3>
+          <div class="BarGraph" id="svg-heatmap">
+          	<h3>Occurence de pairs dans la simulation</h3>
             <p>% d'occurence</p>
-            <div id="svg">
               <script type="text/javascript" src="js/BarGraph.js"></script>
-            </div>
             <p align="right">Nombre de pairs</p>
           </div>
 
