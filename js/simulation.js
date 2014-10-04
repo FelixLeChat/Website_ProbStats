@@ -50,10 +50,6 @@ function initialiseSimulation()
 	dataGraph[0] = { pairs: "Pas de paires", frequence: 0};
   	dataGraph[1] = { pairs: "Au moins une paire", frequence: 0};
 
-  	document.getElementById("svg-heatmap").innerHTML = "<h3>Occurence de pairs dans la simulation</h3><p>% d'occurence</p>";
-  	initialiseBarGraph();
-	initialiseGraph();
-
 	startSimulation();
 }
 
@@ -68,7 +64,6 @@ function endSimulation()
 {
 	// Enable button
 	document.getElementById("buttonStart").disabled = false;
-	modifyGraph(dataGraph);
 }
 
 function startYearIteration()
@@ -126,6 +121,12 @@ function updateBarGraph(){
 		dataGraph[0].frequence = (dataGraph[0].frequence * (yearSimulated-1))/yearSimulated;
 		dataGraph[1].frequence = ((dataGraph[1].frequence * (yearSimulated-1)) + 1) / yearSimulated;
 	}
+
+	// BIG HACK pour le bargraph
+	document.getElementById("svg-bargraph").innerHTML = "<h3>Occurence de pairs dans la simulation</h3><p>% d'occurence</p>";
+  	initialiseBarGraph();
+	initialiseGraph();
+	modifyGraph(dataGraph);
 
 	// Debugging purpose
 	//console.log(totalPairs);

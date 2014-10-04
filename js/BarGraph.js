@@ -37,13 +37,11 @@ function type(d) {
 
 /* Test pour changer les informations du graph */
 var dataGraph = new Array();
+  dataGraph[0] = { pairs: "Pas de paires", frequence: 0};
+  dataGraph[1] = { pairs: "Au moins une paire", frequence: 0};
 
 /* Initialise le tableau des informations pour le graph */
 function initialiseGraph(){
-
-
-  dataGraph[0] = { pairs: "Pas de paires", frequence: 0};
-  dataGraph[1] = { pairs: "Au moins une paire", frequence: 0};
 
   x.domain(dataGraph.map(function(d) {
     return d.pairs; 
