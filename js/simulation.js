@@ -123,7 +123,7 @@ function updateBarGraph(){
 	}
 
 	// BIG HACK pour le bargraph
-	document.getElementById("svg-bargraph").innerHTML = "<h3>Occurence de pairs dans la simulation</h3><p>% d'occurence</p>";
+	document.getElementById("svg-bargraph").innerHTML = "<h3>Occurence de pairs après " + yearSimulated +" iterations</h3><p>% d'occurence</p>";
   	initialiseBarGraph();
 	initialiseGraph();
 	modifyGraph(dataGraph);
