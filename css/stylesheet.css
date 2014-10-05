@@ -31,7 +31,7 @@ li
 .Container
 {
   width:550px;
-  height: 960px;
+  height: 1105px;
   margin-left:20px;
   margin:0px auto;
   text-align:left;
@@ -56,7 +56,7 @@ li
 {
 	margin-bottom:20px;
 	margin-left: 20px;
-	width:255px;
+	width:260px;
 	height:260px;
 	border:3px solid #000000;
 	border-radius: 10px 10px 10px 10px;
@@ -132,8 +132,8 @@ li
 /* Cal-Heatmap*/
 .HeatMap
 {
-  width:510px;
-  height: 250px;
+  width:512px;
+  height: 280px;
   margin:0px auto;
   margin-bottom:20px;
   display:inline-block;
@@ -147,7 +147,7 @@ li
 /* D3 Bargraph*/
 .BarGraph
 {
-  width:510px;
+  width:512px;
   height: 285x;
   display:inline-block;
   padding: 0px 15px 15px 15px;
@@ -160,4 +160,18 @@ li
 .BarGraph p
 {
 	margin: 0px;
+}
+
+
+.Description
+{
+  width:512px;
+  height: 65px;
+  display:inline-block;
+  padding: 0px 15px 15px 15px;
+  background-color: #eeeeee;
+  border:3px solid #000000;
+  border-radius: 10px 10px 10px 10px;
+  background-color:#FFFFFF;
+  margin-bottom: 15px;
 }

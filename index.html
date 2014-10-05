@@ -26,6 +26,12 @@
         <div class="Container">
             <h1 style="text-align:center"> Paradoxe des anniversaires</h1>
 
+            <!-- Description de l'expérience -->
+            <div class="Description">
+            	<p style="font-size:15px;text-align:justify;">La paradoxe des anniversaires est une estimation probabiliste du nombre de personnes que l'on doit réunir pour avoir une chance sur deux que deux personnes de ce groupe aient leur anniversaires le même jour de l'année.</p>
+            </div>
+
+
             <!-- Section des configurations de l'experience -->
             <div class="Setup">
                 <h3>Configuration des variables</h3>
@@ -58,6 +64,7 @@
             	<h3>Calendrier des dates d'anniversaires</h3>
               <script type="text/javascript" src="js/heatmap.js"></script>
             </div>
+          <p>Pour voir les résultats s'afficher sur le calendrier, il faut prévoir un minimum de 200ms entre les itérations.</p>
           </div>
 
           <div class="BarGraph" id="svg-bargraph">
@@ -76,7 +83,7 @@
     </body>
     <script type="text/javascript">
 
-    <!-- Modifie le html interne pour afficher les resultats au lieu des consignes -->
+    // Modifie le html interne pour afficher les resultats au lieu des consignes
     function hideFonctionnement(){
         document.getElementById("Fonctionnement").innerHTML = 
         	"<h3>Résultats</h3>" +
