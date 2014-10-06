@@ -27,6 +27,7 @@ var myInterval;
 var totalBirth;
 var totalPairs;
 var lastPairs;
+var time;
 
 initialiseBarGraph();
 initialiseGraph();
@@ -50,12 +51,16 @@ function initialiseSimulation()
 	dataGraph[0] = { pairs: "Pas de paires", frequence: 0};
   	dataGraph[1] = { pairs: "Au moins une paire", frequence: 0};
 
+  	// Temps entre iterations
+  	time = document.getElementById("Temps").value;
+
 	startSimulation();
 }
 
 function startSimulation()
 {
 	yearSimulated = 0;
+	resetHeatMap();
 
 	startYearIteration();
 }
@@ -72,7 +77,10 @@ function startYearIteration()
 
 	resultDay = initializeArray(360, 0);
 	// Initialise le heatMap
-	resetHeatMap();
+	if(time >= 200)
+	{	
+		resetHeatMap();
+	}
 
 	birthSimulated = 0;
 	myInterval = window.setInterval(generateRandom, 10);
@@ -86,7 +94,11 @@ function endYearIteration()
 	updateBarGraph();
 
 	//Show heatMap
-	setheatMap(parser(listToheatMap(resultDay)));
+	if(time >= 200)
+	{
+		setheatMap(parser(listToheatMap(resultDay)));
+	}
+
 
 	if(yearSimulated >= nbOfYearsToSimulated)
 	{
@@ -94,7 +106,7 @@ function endYearIteration()
 	}
 	else
 	{
-		setTimeout(startYearIteration, document.getElementById("Temps").value);
+		setTimeout(startYearIteration, time);
 	}
 }
 
@@ -134,7 +146,7 @@ function updateBarGraph(){
   	initialiseBarGraph();
 	initialiseGraph();
 	modifyGraph(dataGraph);
-
+	
 	// Debugging purpose
 	//console.log(totalPairs);
 	//dataGraph.forEach(function(d){console.log(d);});
