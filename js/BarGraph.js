@@ -94,10 +94,11 @@ function modifyGraph(data){
       .on('mouseout', tip.hide);
 
       // Ajout de la barre d'estimation selon la simulation
+      /*
       svg.select(".estimated")
         .attr("width", "400px")
         .attr("height", "2px")
-        .attr("style", "background-coloe:black;")
+        .attr("style", "background-color:black;")
         .attr("x", 0)
-        .attr("y", 0);
+        .attr("y", 0);*/
 }
