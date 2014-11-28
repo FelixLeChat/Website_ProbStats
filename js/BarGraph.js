@@ -88,5 +88,65 @@ function modifyGraph(data){
         .attr("y", function(d) { return y(d.frequence); })
         .attr("height", function(d) { return height - y(d.frequence); })
       .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
+      .on('mouseout', tip.hide);
+
+      setEstimate(0.50,0.40, 0.60);
+}
+
+function setEstimate (estimated, min, max) {
+    // Ajout de la barre d'estimation selon la simulation
+    // <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+
+    var nameEstimate;
+    if(LANGUE == "french")
+    {
+      nameEstimate = "Estimer";
+    }
+    else if (LANGUE == "english")
+    {
+      nameEstimate = "Estimated";
+    }
+    // Estimated line 9 estimated 0.00 to 1.00
+    svg.append("line")
+      .attr("x1", 0) // fixed
+      .attr("y1", 160*(1-estimated))
+      .attr("x2", 418) // fixed
+      .attr("y2", 160*(1-estimated))
+      .attr("style", "stroke:black;stroke-width:2");
+    svg.append("text")
+      .attr("x", 355)
+      .attr("y", 160*(1-estimated) - 7)
+      .attr("dy", ".40em")
+      .attr("style", "text-anchor:end;")
+      .html(nameEstimate);
+
+    // minimum
+    svg.append("line")
+      .attr("x1", 0) // fixed
+      .attr("y1", 160*(1-min))
+      .attr("x2", 418) // fixed
+      .attr("y2", 160*(1-min))
+      .attr("style", "stroke:red;stroke-width:1");
+    svg.append("text")
+      .attr("x", 280)
+      .attr("y", 160*(1-min) - 5)
+      .attr("dy", ".30em")
+      .attr("style", "text-anchor:end;")
+      //.attr("fill", "red")
+      .html("Min");
+
+    // maximum
+    svg.append("line")
+      .attr("x1", 0) // fixed
+      .attr("y1", 160*(1-max))
+      .attr("x2", 418) // fixed
+      .attr("y2", 160*(1-max))
+      .attr("style", "stroke:blue;stroke-width:1");
+    svg.append("text")
+      .attr("x", 390)
+      .attr("y", 160*(1-max) - 5)
+      .attr("dy", ".30em")
+      .attr("style", "text-anchor:end;")
+      //.attr("fill", "red")
+      .html("Max");
 }
