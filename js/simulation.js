@@ -21,6 +21,10 @@ var resultMonth = initializeArray(probMois.length, 0);
 var resultDay = initializeArray(360, 0);
 var resultStat = initializeArray(5,0);
 
+var estimate = 0;
+var max_intervalle = 100;
+var min_intervalle = 0;
+
 var myInterval;
 
 // Variable pour les résultats totaux
@@ -28,6 +32,7 @@ var totalBirth;
 var totalPairs;
 var lastPairs;
 var time;
+var NbOfSucces = 0;
 
 initialiseBarGraph();
 initialiseGraph();
@@ -46,6 +51,7 @@ function initialiseSimulation()
 	resultStat = initializeArray(5,0);
 	totalPairs = 0;
 	lastPairs = 0;
+	NbOfSucces = 0;
 
 	// Initialise le BarGraph
 	dataGraph[0] = { pairs: "Pas de paires", frequence: 0};
@@ -61,9 +67,26 @@ function startSimulation()
 {
 	yearSimulated = 0;
 	resetHeatMap();
-
+	estimate = theoricValue(nbOfBirthToSimulate);
 	startYearIteration();
 }
+
+
+function theoricValue(amountPeople) 
+{
+ return (1 - probabilityAllDifferentBirthday(nbOfBirthToSimulate));
+}
+
+function probabilityAllDifferentBirthday(number)
+{
+	var multiple=1;
+	for(var i = 0; i < number; i++)
+	{
+		multiple = multiple * ((365-i)/365);
+	}
+	return multiple;
+}
+
 
 function endSimulation()
 {
@@ -89,8 +112,8 @@ function startYearIteration()
 function endYearIteration()
 {
 	window.clearInterval(myInterval);
-	updateResults();
 	yearSimulated++;	
+	updateResults();
 	updateBarGraph();
 
 	//Show heatMap
@@ -110,17 +133,28 @@ function endYearIteration()
 	}
 }
 
-function updateResults(){
+function updateResults()
+{
 	totalBirth += parseInt(nbOfBirthToSimulate);	
 	document.getElementById("nbPersonnes").value = totalBirth;
 	document.getElementById("nbDoublons").value = resultStat[1];
 	document.getElementById("nbTriplets").value = resultStat[2] + resultStat[3] + resultStat[4];
+	var sum = resultStat[1] + resultStat[2] + resultStat[3] + resultStat[4] - lastPairs;
+	if(sum > 0)
+	{
+		NbOfSucces++;
+	}
+	
+	var moyenne = NbOfSucces/yearSimulated;
+	var variance = moyenne*(1-moyenne);
+	var incertitude = 1.96*Math.pow(variance/yearSimulated, 1/2)
+	min_intervalle = Math.max(0, moyenne - incertitude);
+	max_intervalle = Math.min(1,moyenne + incertitude);	
 }
 
 function updateBarGraph(){
 
 	// Calcule le nombre de pairs obtenue dans une
-
 	totalPairs = resultStat[1] + resultStat[2] + resultStat[3] + resultStat[4] - lastPairs;
 	lastPairs += totalPairs;
 
@@ -150,7 +184,8 @@ function updateBarGraph(){
   	initialiseBarGraph();
 	initialiseGraph();
 	modifyGraph(dataGraph);
-	
+
+	setEstimate(estimate, min_intervalle, max_intervalle);
 	// Debugging purpose
 	//console.log(totalPairs);
 	//dataGraph.forEach(function(d){console.log(d);});

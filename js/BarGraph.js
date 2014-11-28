@@ -89,8 +89,6 @@ function modifyGraph(data){
         .attr("height", function(d) { return height - y(d.frequence); })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide);
-
-      setEstimate(0.50,0.40, 0.60);
 }
 
 function setEstimate (estimated, min, max) {
@@ -100,11 +98,11 @@ function setEstimate (estimated, min, max) {
     var nameEstimate;
     if(LANGUE == "french")
     {
-      nameEstimate = "Estimer";
+      nameEstimate = "Valeur théorique";
     }
     else if (LANGUE == "english")
     {
-      nameEstimate = "Estimated";
+      nameEstimate = "Expected Value";
     }
     // Estimated line 9 estimated 0.00 to 1.00
     svg.append("line")
