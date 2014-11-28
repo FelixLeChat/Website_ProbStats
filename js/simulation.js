@@ -134,17 +134,8 @@ function updateBarGraph(){
 		dataGraph[1].frequence = ((dataGraph[1].frequence * (yearSimulated-1)) + 1) / yearSimulated;
 	}
 
-	// BIG HACK pour le bargraph
-	
-  	
-  	/* Fix for the remaining tool-tip
-  	tip = document.getElementById("d3-tip");
-  	if(tip !=null){
-  	  tip.setAttribute("class", "NOCLASS");
-  	  tip.setAttribute("id", "NOID");
-    }*/
 
-	$(".BarGraph").html("<h3 class=\"french\">Occurence de pairs après <span id=\"iterationCount\"></span> iterations</h3>'<h3 class=\"english\">Number of pairs after <span id=\"iterationCount\"></span> iterations</h3><p>% Occurence</p>");
+	$(".BarGraph").html("<h3 class=\"french\">Occurence de pairs après <span class=\"iterationCount\"></span> iterations</h3>'<h3 class=\"english\">Number of pairs after <span class=\"iterationCount\"></span> iterations</h3><p>% Occurence</p>");
     if(LANGUE == "french")
     {
     	$(".english").hide();
@@ -154,7 +145,7 @@ function updateBarGraph(){
     	$(".french").hide();
     }
     
-	$("#iterationCount").html(yearSimulated);
+	$(".iterationCount").html(yearSimulated);
 
   	initialiseBarGraph();
 	initialiseGraph();
