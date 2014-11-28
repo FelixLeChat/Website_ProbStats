@@ -63,15 +63,12 @@ function initialiseGraph(){
   y.domain([0, 1]);
   svg.append("g")
     .attr("class", "y axis")
-    .call(yAxis);
+    .call(yAxis)
 
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);  
-
-  svg.append("rect")
-  .attr("class", "estimated");
 }
 
 function modifyGraph(data){
@@ -91,14 +88,5 @@ function modifyGraph(data){
         .attr("y", function(d) { return y(d.frequence); })
         .attr("height", function(d) { return height - y(d.frequence); })
       .on('mouseover', tip.show)
-      .on('mouseout', tip.hide);
-
-      // Ajout de la barre d'estimation selon la simulation
-      /*
-      svg.select(".estimated")
-        .attr("width", "400px")
-        .attr("height", "2px")
-        .attr("style", "background-color:black;")
-        .attr("x", 0)
-        .attr("y", 0);*/
+      .on('mouseout', tip.hide)
 }

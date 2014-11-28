@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/BarGraph.css"/>
 
     <head>
-      <title>Paradoxe des anniversaires</title>
+      <title>The Birthday Paradox</title>
       <!-- Favicon -->
       <link rel="shortcut icon" href="img/thumbnail.jpg">
     </head>
@@ -24,63 +24,75 @@
 
         <!-- Conteneur du visuel du plus haut niveau -->
         <div class="Container">
-            <h1 style="text-align:center"> Paradoxe des anniversaires</h1>
+
+            <button class="switchFrench" style="float:right;">French</button>
+            <button class="switchEnglish" style="float:right;">English</button>
+
+            <h1 style="text-align:center" class="french">Paradoxe des anniversaires</h1>
+            <h1 style="text-align:center" class="english">The Birthday Paradox</h1>
 
             <!-- Description de l'expérience -->
             <div class="Description">
-            	<p style="font-size:15px;text-align:justify;">La paradoxe des anniversaires est une estimation probabiliste du nombre de personnes que l'on doit réunir pour avoir une chance sur deux que deux personnes de ce groupe aient leur anniversaires le même jour de l'année.</p>
+            	<p style="font-size:15px;text-align:justify;" class="french">La paradoxe des anniversaires est une estimation probabiliste du nombre de personnes que l'on doit réunir pour avoir une chance sur deux que deux personnes de ce groupe aient leur anniversaires le même jour de l'année.</p>
+                <p style="font-size:15px;text-align:justify;" class="english">In the probability theory, the birthday paradox concerns the probability about the number of people that we have to group together to have a 50% chance that two people in this group are going to have their birthday on the same date.</p>
+
             </div>
 
 
             <!-- Section des configurations de l'experience -->
             <div class="Setup">
-                <h3>Configuration des variables</h3>
+                <h3 class="french">Configuration des variables</h3>
+                <h3 class="english">Variables configuration</h3>
 
                 <!-- Formulaire Html -->
                 <form class="Form" name="SetupForm">
-                    <p class="SetupFormText">Nombre de personnes à générer :<input name="Personnes" id ="Personnes" value="40" min="2" max="1000" type="number"/></p>
-                    <p class="SetupFormText">Nombre d'itérations (années) :<input name="Iterations" id="Iterations" value="5" min="1" max="1000" type="number"/></p>
-                    <p class="SetupFormText">Temps entre les itérations (ms) :<input name="Temps" id="Temps" value="2000" min="1" max="5000" type="number" /></p>
+                    <p class="SetupFormText"><span class="french">Nombre de personnes à générer :</span><span class="english">Number of people to generate :</span><input name="Personnes" id ="Personnes" value="40" min="2" max="1000" type="number"/></p>
+                    <p class="SetupFormText"><span class="french">Nombre d'itérations (années) :</span><span class="english">Iteration count (years) :</span><input name="Iterations" id="Iterations" value="5" min="1" max="1000" type="number"/></p>
+                    <p class="SetupFormText"><span class="french">Temps entre les itérations (ms) :</span><span class="english">Time between iteration (ms) :</span><input name="Temps" id="Temps" value="2000" min="1" max="5000" type="number" /></p>
                 </form>
 
-                <button id="buttonStart" class="Button" onclick="initialiseSimulation();hideFonctionnement();">Commencer</button>
+                <button id="buttonStart" class="Button" onclick="initialiseSimulation();hideFonctionnement();"><span class="french">Commencer</span><span class="english">Start</span></button>
             </div>
 
             <div class="Fonctionnement" id="Fonctionnement">
-            	<h3>Fonctionnement</h3>
+            	<h3 class="french">Fonctionnement</h3>
+                <h3 class="english">Operation</h3>
             	
             	<!-- Liste en point pour le fonctionnement -->
             	<ul type="circle">
-            		<li>Choisir le nombre de personnes à évaluer pour l'expérience</li>
-            		<li>Choisir le nombre de fois à faire l'expérience</li>
-            		<li>Choisir le temps à attendre entre les itérations (pour voir le résultat sur les graphiques)</li>
-            		<li>Appuyer sur commencer pour lancer l'expérience</li>
+            		<li class="french">Choisir le nombre de personnes à évaluer pour l'expérience</li>
+                    <li class="english">Choose the number of peoples to evaluate in the experiment</li>
+            		<li class="french">Choisir le nombre de fois à faire l'expérience</li>
+                    <li class="english">Choose the number of time to run the experiment</li>
+            		<li class="french">Choisir le temps à attendre entre les itérations (pour voir le résultat sur les graphiques)</li>
+                    <li class="english">Choose the time to wait between iterations ( too see the result of the graph)</li>
+            		<li class="french">Appuyer sur commencer pour lancer l'expérience</li>
+                    <li class="english">Press on "start" to begin the experiment</li>
             	</ul>
             </div>
 
           <div class="HeatMap">
             <!-- Script pour la gestion du graphique -->
             <div id="cal-heatmap">
-            	<h3>Calendrier des dates d'anniversaires</h3>
+            	<h3 class="french">Calendrier des dates d'anniversaires</h3>
+                <h3 class="english">Calendar of the aniversaries</h3>
               <script type="text/javascript" src="js/heatmap.js"></script>
             </div>
-          <p>Pour voir les résultats s'afficher sur le calendrier, il faut prévoir un minimum de 200ms entre les itérations.</p>
+          <p class="french">Pour voir les résultats s'afficher sur le calendrier, il faut prévoir un minimum de 200ms entre les itérations.</p>
+          <p class="english">To see the result on the calendar, you need to specify at least 200ms between iterations.</p>
           </div>
 
           <div class="BarGraph" id="svg-bargraph">
-          	<h3>Occurence de pairs après 0 iterations</h3>
-            <p>% d'occurence</p>
-              <script src="js/d3.tip.v0.6.3.js"></script>
+          	<h3 class="french">Occurence de pairs après <span id="iterationCount">0</span> iterations</h3>
+            <h3 class="english">Number of pairs after <span id="iterationCount">0</span> iterations</h3>
+            <p>% Occurence</p>
+              <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
               <script type="text/javascript" src="js/BarGraph.js"></script>
           </div>
 
+            <div class = "Testing 101">
+                <div id="test"></div>
                 <script type="text/javascript" src="js/simulation.js"></script>
-
-
-            <div class ="Canvas">
-                <h3 style="margin-bottom: 0px;">Analyse avec incertitude pour chaque itération</h3>
-                <canvas class="myCanvas" id="plot" width="500" height="250"></canvas>
-                <script type="text/javascript" src="js/canvas.js"></script>
             </div>
         </div>  
 
@@ -89,19 +101,64 @@
 
     // Modifie le html interne pour afficher les resultats au lieu des consignes
     function hideFonctionnement(){
-        document.getElementById("Fonctionnement").innerHTML = 
-        	"<h3>Résultats</h3>" +
-        	"<form>" + 
-            	"<ul type=\"circle\">" +
-            		"<li>Nombre de personnes : </li>" +
-            		"<input name=\"nbPersonnes\" id =\"nbPersonnes\" type=\"text\" disabled=\"true\" value=\"0\" />" +
-            		"<li>Nombre de doublons : </li>" +
-            		"<input name=\"nbDoublons\" id =\"nbDoublons\" type=\"text\" disabled=\"true\" value=\"0\" />" +
-            		"<li>Nombre de triplets et plus : </li>" +
-            		"<input name=\"nbTriplets\" id =\"nbTriplets\" type=\"text\" disabled=\"true\" value=\"0\" />" +
-            	"</ul>" +
+
+            document.getElementById("Fonctionnement").innerHTML = 
+            "<h3>Résultats</h3>" +
+            "<form>" + 
+                "<ul type=\"circle\">" +
+                    "<li class=\"french\">Nombre de personnes : </li>" +
+                    "<li class=\"english\">Number of people : </li>" +
+                    "<input name=\"nbPersonnes\" id =\"nbPersonnes\" type=\"text\" disabled=\"true\" value=\"0\" />" +
+                    "<li class=\"french\">Nombre de doublons : </li>" +
+                    "<li class=\"english\">Number of double : </li>" +
+                    "<input name=\"nbDoublons\" id =\"nbDoublons\" type=\"text\" disabled=\"true\" value=\"0\" />" +
+                    "<li class=\"french\">Nombre de triplets et plus : </li>" +
+                    "<li class=\"english\">Number of triplets or more : </li>" +
+                    "<input name=\"nbTriplets\" id =\"nbTriplets\" type=\"text\" disabled=\"true\" value=\"0\" />" +
+                "</ul>" +
             "</form>";
+
+        if( LANGUE == "french")
+        {
+            $(".english").hide();
+        }
+        else if (LANGUE == "english")
+        {
+            $(".french").hide();
+        }
     }
+    </script>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+
+    var LANGUE = "english";
+        // Switch from english to french
+        $(".switchFrench").click( function() {
+            $(".french").show();
+            $(".english").hide();
+        
+            $(".switchEnglish").html("Anglais");
+            $(".switchFrench").html("Français");
+
+            $("head title").text("Paradoxe des anniversaires");
+            LANGUE = "french";
+        });
+        
+        // Switch from english to french
+        $(".switchEnglish").click( function() {
+            $(".french").hide();
+            $(".english").show();
+        
+            $(".switchEnglish").html("English");
+            $(".switchFrench").html("French");
+
+            $("head title").text("The Birthday Paradox");
+            LANGUE = "english";
+        });
+
+        $(".french").hide();
+
     </script>
 
 </html>

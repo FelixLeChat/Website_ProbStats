@@ -1,16 +1,3 @@
-.Canvas
-{
-  width:512px;
-  height: 285px;
-  display:inline-block;
-  padding: 0px 15px 15px 15px;
-  background-color: #eeeeee;
-  border:3px solid #000000;
-  border-radius: 10px 10px 10px 10px;
-  background-color:#FFFFFF;
-  margin-top: 20px;
-}
-
 head
 {
 
@@ -30,7 +17,6 @@ body
 h3
 {
 	margin-left:20px;
-	text-align: center;
 }
 
 li
@@ -45,7 +31,7 @@ li
 .Container
 {
   width:550px;
-  height: 1390px;
+  height: 1090px;
   margin-left:20px;
   margin:0px auto;
   text-align:left;
@@ -162,7 +148,7 @@ li
 .BarGraph
 {
   width:512px;
-  height: 270px;
+  height: 285x;
   display:inline-block;
   padding: 0px 15px 15px 15px;
   background-color: #eeeeee;
@@ -180,7 +166,7 @@ li
 .Description
 {
   width:512px;
-  height: 65px;
+  height: 75px;
   display:inline-block;
   padding: 0px 15px 15px 15px;
   background-color: #eeeeee;

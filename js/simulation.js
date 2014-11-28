@@ -135,7 +135,7 @@ function updateBarGraph(){
 	}
 
 	// BIG HACK pour le bargraph
-	document.getElementById("svg-bargraph").innerHTML = "<h3>Occurence de pairs après " + yearSimulated +" iterations</h3><p>% d'occurence</p>";
+	
   	
   	/* Fix for the remaining tool-tip
   	tip = document.getElementById("d3-tip");
@@ -143,6 +143,19 @@ function updateBarGraph(){
   	  tip.setAttribute("class", "NOCLASS");
   	  tip.setAttribute("id", "NOID");
     }*/
+
+	$(".BarGraph").html("<h3 class=\"french\">Occurence de pairs après <span id=\"iterationCount\"></span> iterations</h3>'<h3 class=\"english\">Number of pairs after <span id=\"iterationCount\"></span> iterations</h3><p>% Occurence</p>");
+    if(LANGUE == "french")
+    {
+    	$(".english").hide();
+    }
+    else if (LANGUE == "english")
+    {
+    	$(".french").hide();
+    }
+    
+	$("#iterationCount").html(yearSimulated);
+
   	initialiseBarGraph();
 	initialiseGraph();
 	modifyGraph(dataGraph);
