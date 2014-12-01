@@ -25,13 +25,14 @@ function initialiseBarGraph(){
     .orient("left")
     .tickFormat(formatPercent); // Tooltip
 
+    /*
   tip = d3.tip()
     .attr('class', 'd3-tip')
     .attr("id", "d3-tip")
     .offset([-10, 0])
     .html(function(d) {
       return "<strong>Occurence:</strong> <span style='color:red'>" + (d.frequence*100).toFixed(2) + "%</span>";
-    })
+    })*/
 
    svg = d3.select(".BarGraph").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -39,7 +40,7 @@ function initialiseBarGraph(){
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  svg.call(tip);
+  //svg.call(tip);
 }
 
 function type(d) {
@@ -86,9 +87,9 @@ function modifyGraph(data){
         .attr("x", function(d) { return x(d.pairs); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d.frequence); })
-        .attr("height", function(d) { return height - y(d.frequence); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide);
+        .attr("height", function(d) { return height - y(d.frequence); });
+      //.on('mouseover', tip.show)
+     // .on('mouseout', tip.hide);
 }
 
 function setEstimate (estimated, min, max) {
@@ -98,11 +99,11 @@ function setEstimate (estimated, min, max) {
     var nameEstimate;
     if(LANGUE == "french")
     {
-      nameEstimate = "Valeur théorique";
+      nameEstimate = "Théorie";
     }
     else if (LANGUE == "english")
     {
-      nameEstimate = "Expected Value";
+      nameEstimate = "Expected";
     }
     // Estimated line 9 estimated 0.00 to 1.00
     svg.append("line")
