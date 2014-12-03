@@ -154,11 +154,13 @@ function setEstimate (estimated, min, max) {
     // <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
 
     var nameEstimate;
-    var conficendeMin = "Confidence Min";
-    var conficendeMax = "Confidence Max";
+    var confidenceMin = "Confidence Min";
+    var confidenceMax = "Confidence Max";
     if(LANGUE == "french")
     {
       nameEstimate = "Théorie";
+      confidenceMin = "Confience Min";
+      confidenceMax = "Confience Max";
     }
     else if (LANGUE == "english")
     {
@@ -191,7 +193,7 @@ function setEstimate (estimated, min, max) {
       .attr("dy", ".30em")
       .attr("style", "text-anchor:end;")
       //.attr("fill", "red")
-      .html(conficendeMin);
+      .html(confidenceMin);
 
     // maximum
     svg.append("line")
@@ -206,5 +208,5 @@ function setEstimate (estimated, min, max) {
       .attr("dy", ".30em")
       .attr("style", "text-anchor:end;")
       //.attr("fill", "red")
-      .html(conficendeMax);
+      .html(confidenceMax);
 }
