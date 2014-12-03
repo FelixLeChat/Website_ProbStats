@@ -154,8 +154,8 @@ function setEstimate (estimated, min, max) {
     // <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
 
     var nameEstimate;
-    var conficendeMin = "Conficende Min";
-    var conficendeMax = "Conficende Max";
+    var conficendeMin = "Confidence Min";
+    var conficendeMax = "Confidence Max";
     if(LANGUE == "french")
     {
       nameEstimate = "Théorie";
