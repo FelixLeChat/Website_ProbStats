@@ -24,6 +24,8 @@ var resultStat = initializeArray(5,0);
 var estimate = 0;
 var max_intervalle = 100;
 var min_intervalle = 0;
+var sum = 0;
+var lastSum = 0;
 
 var myInterval;
 
@@ -35,7 +37,10 @@ var time;
 var NbOfSucces = 0;
 
 initialiseBarGraph();
+// first graph
 initialiseGraph();
+// second graph
+initialiseGraph(true);
 
 
 function initialiseSimulation()
@@ -54,7 +59,7 @@ function initialiseSimulation()
 	NbOfSucces = 0;
 
 	// Initialise le BarGraph
-
+/*
 	if(LANGUE == "french")
 	{
 		dataGraph[0] = { pairs: "Au moins une paire", frequence: 0};
@@ -62,7 +67,7 @@ function initialiseSimulation()
 	else if ( LANGUE == 'english')
 	{
 	    dataGraph[0] = { pairs: "At least one pair", frequence: 0};
-	}
+	}*/
 
   	// Temps entre iterations
   	time = document.getElementById("Temps").value;
@@ -160,6 +165,7 @@ function updateResults()
 }
 
 function updateBarGraph(){
+	console.log(resultStat);
 
 	// Calcule le nombre de pairs obtenue dans une
 	totalPairs = resultStat[1] + resultStat[2] + resultStat[3] + resultStat[4] - lastPairs;
@@ -176,7 +182,31 @@ function updateBarGraph(){
 	}
 
 
+	// somme de toutes les donnes
+	sum = resultStat[0] + resultStat[1] + resultStat[2] + resultStat[3] + resultStat[4]; 
+
+	dataGraphB[0].frequence = resultStat[0] / sum;
+	dataGraphB[1].frequence = resultStat[1] / sum;
+	dataGraphB[2].frequence = resultStat[2] / sum;
+	dataGraphB[3].frequence = resultStat[3] / sum;
+
+	console.log(dataGraphB);
+
+
 	$(".BarGraph").html("<h3 class=\"french\">Occurence de pairs après <span class=\"iterationCount\"></span> iterations</h3>'<h3 class=\"english\">Number of pairs after <span class=\"iterationCount\"></span> iterations</h3><p>% Occurence</p>");
+    $(".BarGraphB").html("<h3 class=\"french\">Distribution des personnes par jour</h3><h3 class=\"english\">People distribution per day</h3><p>% Occurence</p>");
+
+    
+	$(".iterationCount").html(yearSimulated);
+
+  	initialiseBarGraph();
+  	// first one
+	initialiseGraph();
+	modifyGraph(dataGraph);
+	// second one
+	initialiseGraph(true);
+	modifyGraphB(dataGraphB);
+	
     if(LANGUE == "french")
     {
     	$(".english").hide();
@@ -185,13 +215,6 @@ function updateBarGraph(){
     {
     	$(".french").hide();
     }
-    
-	$(".iterationCount").html(yearSimulated);
-
-  	initialiseBarGraph();
-	initialiseGraph();
-	modifyGraph(dataGraph);
-
 	setEstimate(estimate, min_intervalle, max_intervalle);
 	// Debugging purpose
 	//console.log(totalPairs);

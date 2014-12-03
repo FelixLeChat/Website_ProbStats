@@ -1,5 +1,5 @@
 
-var margin,x,y,xAxis,yAxis,svg,formatPercent,tip;
+var margin,x,y,xAxis,yAxis,svg,svgB,formatPercent,tip;
 
 
 function initialiseBarGraph(){
@@ -40,7 +40,13 @@ function initialiseBarGraph(){
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    svgB = d3.select(".BarGraphB").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   //svg.call(tip);
+  $(".BarGraphB").append("<h5 class=\"french\">Nombre de personnes</h5><h5 class=\"english\">Number of people</h5>");
 }
 
 function type(d) {
@@ -60,11 +66,34 @@ var dataGraph = new Array();
   {
     dataGraph[0] = { pairs: "At least one pair", frequence: 0};
   }
-  
+
+var dataGraphB = new Array();
+
+dataGraphB[0] = { pairs: "1", frequence: 0};
+dataGraphB[1] = { pairs: "2", frequence: 0};
+dataGraphB[2] = { pairs: "3", frequence: 0};
+dataGraphB[3] = { pairs: "4", frequence: 0};
 
 /* Initialise le tableau des informations pour le graph */
-function initialiseGraph(){
+function initialiseGraph(second){
 
+if( typeof second !== 'undefined')
+{
+    x.domain(dataGraphB.map(function(d) {
+    return d.pairs; 
+  }));
+  // Second graph
+  svgB.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+
+  svgB.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+}
+else
+{
   x.domain(dataGraph.map(function(d) {
     return d.pairs; 
   }));
@@ -77,7 +106,9 @@ function initialiseGraph(){
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);  
+      .call(xAxis); 
+}
+
 }
 
 function modifyGraph(data){
@@ -98,6 +129,24 @@ function modifyGraph(data){
         .attr("height", function(d) { return height - y(d.frequence); });
       //.on('mouseover', tip.show)
      // .on('mouseout', tip.hide);
+}
+
+function modifyGraphB(data){
+
+    x.domain(data.map(function(d) {
+      return d.pairs; 
+    }));
+
+    y.domain([0, 1]);
+
+    svgB.selectAll(".bar")
+        .data(data)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.pairs); })
+        .attr("width", x.rangeBand())
+        .attr("y", function(d) { return y(d.frequence); })
+        .attr("height", function(d) { return height - y(d.frequence); });
 }
 
 function setEstimate (estimated, min, max) {

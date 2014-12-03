@@ -31,7 +31,7 @@ li
 .Container
 {
   width:550px;
-  height: 1090px;
+  height: 1425px;
   margin-left:20px;
   margin:0px auto;
   text-align:left;
@@ -157,9 +157,33 @@ li
   background-color:#FFFFFF;
 }
 
+.BarGraphB
+{
+  width:512px;
+  height: 285x;
+  display:inline-block;
+  padding: 0px 15px 15px 15px;
+  background-color: #eeeeee;
+  border:3px solid #000000;
+  border-radius: 10px 10px 10px 10px;
+  background-color:#FFFFFF;	
+  margin-top: 20px;
+}
+
 .BarGraph p
 {
 	margin: 0px;
+}
+
+.BarGraphB p
+{
+	margin: 0px;
+}
+.BarGraphB h5
+{
+	margin: 0px;
+	text-align: right;
+	margin-top: -5px;
 }
 
 

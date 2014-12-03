@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <html>
     <script type="text/javascript">    var LANGUE = "english";</script>
-
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
 
@@ -51,7 +51,7 @@
                 <form class="Form" name="SetupForm">
                     <p class="SetupFormText"><span class="french">Nombre de personnes à générer :</span><span class="english">Number of people to generate :</span><input name="Personnes" id ="Personnes" value="23" min="2" max="1000" type="number"/></p>
                     <p class="SetupFormText"><span class="french">Nombre d'itérations (années) :</span><span class="english">Iteration count (years) :</span><input name="Iterations" id="Iterations" value="100" min="1" max="1000" type="number"/></p>
-                    <p class="SetupFormText"><span class="french">Temps entre les itérations (ms) :</span><span class="english">Time between iteration (ms) :</span><input name="Temps" id="Temps" value="20" min="1" max="5000" type="number" /></p>
+                    <p class="SetupFormText"><span class="french">Temps entre les itérations (ms) :</span><span class="english">Time between iteration (ms) :</span><input name="Temps" id="Temps" value="200" min="1" max="5000" type="number" /></p>
                 </form>
 
                 <button id="buttonStart" class="Button" onclick="initialiseSimulation();hideFonctionnement();"><span class="french">Commencer</span><span class="english">Start</span></button>
@@ -89,9 +89,14 @@
           	<h3 class="french">Occurence de pairs après <span class="iterationCount">0</span> iterations</h3>
             <h3 class="english">Number of pairs after <span class="iterationCount">0</span> iterations</h3>
             <p>% Occurence</p>
-              <!--<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>-->
-              <script type="text/javascript" src="js/BarGraph.js"></script>
           </div>
+
+          <div class="BarGraphB" class="svg-bargraph">
+          	<h3 class="french">Distribution des personnes par jour</h3>
+          	<h3 class="english">People distribution per day</h3>
+          	<p>% Occurence</p>
+          </div>
+          <script type="text/javascript" src="js/BarGraph.js"></script>
 
             <div class = "Testing 101">
                 <div id="test"></div>
@@ -132,7 +137,6 @@
     }
     </script>
 
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript">
 
         // Switch from english to french
