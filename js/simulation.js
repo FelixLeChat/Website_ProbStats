@@ -54,8 +54,15 @@ function initialiseSimulation()
 	NbOfSucces = 0;
 
 	// Initialise le BarGraph
-	dataGraph[0] = { pairs: "Pas de paires", frequence: 0};
-  	dataGraph[1] = { pairs: "Au moins une paire", frequence: 0};
+
+	if(LANGUE == "french")
+	{
+		dataGraph[0] = { pairs: "Au moins une paire", frequence: 0};
+	}
+	else if ( LANGUE == 'english')
+	{
+	    dataGraph[0] = { pairs: "At least one pair", frequence: 0};
+	}
 
   	// Temps entre iterations
   	time = document.getElementById("Temps").value;
@@ -160,12 +167,12 @@ function updateBarGraph(){
 
 	// Update de la fréquence des evenements
 	if(totalPairs == 0 && yearSimulated >= 1){
-		dataGraph[0].frequence = ((dataGraph[0].frequence * (yearSimulated-1)) + 1)/yearSimulated;
-		dataGraph[1].frequence = (dataGraph[1].frequence * (yearSimulated-1)) / yearSimulated;
+		//dataGraph[0].frequence = ((dataGraph[0].frequence * (yearSimulated-1)) + 1)/yearSimulated;
+		dataGraph[0].frequence = (dataGraph[0].frequence * (yearSimulated-1)) / yearSimulated;
 	}
 	else if( yearSimulated >= 1){
-		dataGraph[0].frequence = (dataGraph[0].frequence * (yearSimulated-1))/yearSimulated;
-		dataGraph[1].frequence = ((dataGraph[1].frequence * (yearSimulated-1)) + 1) / yearSimulated;
+		//dataGraph[0].frequence = (dataGraph[0].frequence * (yearSimulated-1))/yearSimulated;
+		dataGraph[0].frequence = ((dataGraph[0].frequence * (yearSimulated-1)) + 1) / yearSimulated;
 	}
 
 

@@ -51,8 +51,16 @@ function type(d) {
 
 /* Test pour changer les informations du graph */
 var dataGraph = new Array();
-  dataGraph[0] = { pairs: "Pas de paires", frequence: 0};
-  dataGraph[1] = { pairs: "Au moins une paire", frequence: 0};
+  //dataGraph[0] = { pairs: "Pas de paires", frequence: 0};
+  if(LANGUE == "french")
+  {
+    dataGraph[0] = { pairs: "Au moins une paire", frequence: 0};
+  }
+  else if(LANGUE == "english")
+  {
+    dataGraph[0] = { pairs: "At least one pair", frequence: 0};
+  }
+  
 
 /* Initialise le tableau des informations pour le graph */
 function initialiseGraph(){
@@ -97,6 +105,8 @@ function setEstimate (estimated, min, max) {
     // <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
 
     var nameEstimate;
+    var conficendeMin = "Conficende Min";
+    var conficendeMax = "Conficende Max";
     if(LANGUE == "french")
     {
       nameEstimate = "Théorie";
@@ -113,7 +123,7 @@ function setEstimate (estimated, min, max) {
       .attr("y2", 160*(1-estimated))
       .attr("style", "stroke:black;stroke-width:2");
     svg.append("text")
-      .attr("x", 355)
+      .attr("x", 240)
       .attr("y", 160*(1-estimated) - 7)
       .attr("dy", ".40em")
       .attr("style", "text-anchor:end;")
@@ -127,12 +137,12 @@ function setEstimate (estimated, min, max) {
       .attr("y2", 160*(1-min))
       .attr("style", "stroke:red;stroke-width:1");
     svg.append("text")
-      .attr("x", 280)
+      .attr("x", 135)
       .attr("y", 160*(1-min) - 5)
       .attr("dy", ".30em")
       .attr("style", "text-anchor:end;")
       //.attr("fill", "red")
-      .html("Min");
+      .html(conficendeMin);
 
     // maximum
     svg.append("line")
@@ -142,10 +152,10 @@ function setEstimate (estimated, min, max) {
       .attr("y2", 160*(1-max))
       .attr("style", "stroke:blue;stroke-width:1");
     svg.append("text")
-      .attr("x", 390)
+      .attr("x", 370)
       .attr("y", 160*(1-max) - 5)
       .attr("dy", ".30em")
       .attr("style", "text-anchor:end;")
       //.attr("fill", "red")
-      .html("Max");
+      .html(conficendeMax);
 }
